@@ -11,5 +11,7 @@
         "sourceType": "module"
     },
     "rules": {
+        "linebreak-style": ["error", "windows"],
+        "arrow-body-style": "off"
     }
 }
