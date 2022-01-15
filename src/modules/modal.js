@@ -1,6 +1,6 @@
 export default class Modal {
   constructor({ modalSelector, ...selectors }) {
-    this.modal = document.querySelector('.popup-repair-types');
+    this.modal = document.querySelector(modalSelector);
     if (this.modal) {
       this.init(selectors);
     }
