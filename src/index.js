@@ -1,6 +1,7 @@
 import header from './modules/header/header';
 import { smoothScroll } from './modules/helpers';
 import ModalRepairTypes from './modules/modalRepairTypes';
+import phoneMask from './modules/phoneMask';
 
 const modalRepairTypes = new ModalRepairTypes();
 
@@ -14,3 +15,5 @@ buttonFooter.addEventListener('click', (e) => {
     smoothScroll(target);
   }
 });
+
+phoneMask();
