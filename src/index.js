@@ -2,8 +2,10 @@ import header from './modules/header/header';
 import { smoothScroll } from './modules/helpers';
 import ModalRepairTypes from './modules/modalRepairTypes';
 import phoneMask from './modules/phoneMask';
+import ModalPrivacy from './modules/modalPrivacy';
 
 const modalRepairTypes = new ModalRepairTypes();
+const modalPrivacy = new ModalPrivacy();
 
 header();
 
