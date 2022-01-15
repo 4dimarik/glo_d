@@ -1,14 +1,16 @@
 import header from './modules/header/header';
 import { smoothScroll } from './modules/helpers';
+import ModalPrivacy from './modules/modalPrivacy';
 import ModalRepairTypes from './modules/modalRepairTypes';
 import phoneMask from './modules/phoneMask';
 import formulaItemPopup from './modules/formulaItemPopup';
-import ModalPrivacy from './modules/modalPrivacy';
 
 const modalRepairTypes = new ModalRepairTypes();
 const modalPrivacy = new ModalPrivacy();
 
 header();
+phoneMask();
+formulaItemPopup();
 
 const buttonFooter = document.querySelector('.footer .button-footer');
 buttonFooter.addEventListener('click', (e) => {
@@ -18,6 +20,3 @@ buttonFooter.addEventListener('click', (e) => {
     smoothScroll(target);
   }
 });
-
-phoneMask();
-formulaItemPopup();
