@@ -10,7 +10,6 @@ const formulaItemPopup = () => {
     const ItemPopup = formulaItem.querySelector('.formula-item-popup');
     const ItemPopupHeightNum = parseFloat(getComputedStyle(ItemPopup).getPropertyValue('height'));
     const formulaItemHeightNum = parseFloat(getComputedStyle(formulaItem).getPropertyValue('height'));
-    // const { top: formulaItemTop } = formulaItem.getBoundingClientRect();
 
     const getItemPopupProps = (popupAction, popupPosition) => {
       let props;
