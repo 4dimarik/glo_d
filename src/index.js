@@ -1,3 +1,3 @@
-const contacts = require('./modules/contacts');
+const header = require('./modules/header/header');
 
-contacts();
+header();

@@ -1,5 +1,4 @@
-const contacts = () => {
-  const block = document.querySelector('.header-contacts');
+const contacts = (block) => {
   const firstNumberBlock = block.querySelector('.header-contacts__phone-number-wrap');
   const secondNumberBlock = block.querySelector('.header-contacts__phone-number-accord');
   const arrowSelector = '.header-contacts__arrow';
@@ -18,6 +17,8 @@ const contacts = () => {
     if (target.closest(arrowSelector)) {
       const { height: firstNumberBlockHeight } = getComputedStyle(firstNumberBlock);
       const active = secondNumberBlock.classList.toggle('active');
+      /* eslint no-console: "off" */
+      console.log(active);
       const { top, opacity, transform } = handlerSecondNumber(active, firstNumberBlockHeight);
       target.style.transform = transform;
       secondNumberBlock.style.top = top;
