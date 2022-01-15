@@ -1,5 +1,4 @@
 import { smoothScroll } from '../helpers';
-import ModalRepairTypes from '../modalRepairTypes';
 
 const menu = (header) => {
   const menuBtnSelector = '.menu__icon';
@@ -7,9 +6,8 @@ const menu = (header) => {
   const menuBlock = document.querySelector('.popup-menu');
   const dialogMenu = menuBlock.querySelector('.popup-dialog-menu');
   const closeBtnSelector = '.close-menu';
-  const menuLinkSelector = '.popup-menu-nav__item';
-
-  const modalRepairTypesLinkSelector = '.repair-types-list';
+  const navItemSelector = '.popup-menu-nav__item';
+  const menuLinkSelector = '.menu-link';
 
   const handler = (action = 'close') => {
     let show;
@@ -44,15 +42,11 @@ const menu = (header) => {
       handler('close');
     }
     // menu-link
-    if (target.closest(menuLinkSelector)) {
+    if (target.matches(menuLinkSelector)) {
       handler('close');
-      smoothScroll(target);
-    }
-    // modalRepairTypes
-    if (target.matches(modalRepairTypesLinkSelector)) {
-      handler('close');
-      const modalRepairTypes = new ModalRepairTypes();
-      modalRepairTypes.toggle(true);
+      if (target.closest(navItemSelector)) {
+        smoothScroll(target);
+      }
     }
   });
 };

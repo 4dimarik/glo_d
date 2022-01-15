@@ -6,7 +6,7 @@ export default class Modal {
     }
   }
 
-  init({ bodySelector, closeBtnSelector }) {
+  init({ bodySelector, closeBtnSelector, modalLinkSelector }) {
     this.body = this.modal.querySelector(bodySelector);
     this.closeBtn = this.modal.querySelector(closeBtnSelector);
 
@@ -15,6 +15,14 @@ export default class Modal {
       const { target } = e;
       if (target === this.closeBtn) {
         this.toggle(false);
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      e.preventDefault();
+      const { target } = e;
+      if (target.matches(modalLinkSelector)) {
+        this.toggle(true);
       }
     });
   }
