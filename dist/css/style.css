@@ -1234,7 +1234,22 @@ template, [hidden] {
     color: #000000;
     z-index: 0;
 }
-
+/* дополнительные стили -->*/
+.formula-item.active{
+  z-index: 2;
+}
+.formula-item.active .formula-item-popup{
+  opacity: 1;
+  visibility: visible;
+}
+.formula-item.active .formula-item-popup.bottom:before {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.formula-item.active .formula-item__icon-inner{
+  opacity: 1;
+}
+/* <--дополнительные стили */
 .formula-item strong {
     font-weight: 500;
 }
@@ -1332,10 +1347,6 @@ template, [hidden] {
     padding-bottom: 15px;
 }
 
-.formula-item-popup.bottom:before {
-  -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
 
 @media (max-width: 1024px) {
     .formula-item-popup {
