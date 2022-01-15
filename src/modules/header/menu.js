@@ -33,4 +33,4 @@ const menu = (block) => {
   });
 };
 
-module.exports = menu;
+export default menu;

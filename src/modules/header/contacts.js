@@ -27,4 +27,4 @@ const contacts = (block) => {
   });
 };
 
-module.exports = contacts;
+export default contacts;

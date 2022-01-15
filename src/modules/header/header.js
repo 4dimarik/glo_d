@@ -1,5 +1,5 @@
-const contacts = require('./contacts');
-const menu = require('./menu');
+import contacts from './contacts';
+import menu from './menu';
 
 const header = () => {
   const block = document.querySelector('header');
@@ -7,4 +7,4 @@ const header = () => {
   menu(block);
 };
 
-module.exports = header;
+export default header;

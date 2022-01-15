@@ -1,3 +1,3 @@
-const header = require('./modules/header/header');
+import header from './modules/header/header';
 
 header();
