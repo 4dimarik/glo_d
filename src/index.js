@@ -1,3 +1,3 @@
-const contacts = require("./modules/contacts");
+import contacts from './modules/contacts';
 
 contacts();
