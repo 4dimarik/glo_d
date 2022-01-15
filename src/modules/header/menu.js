@@ -1,14 +1,17 @@
 import { smoothScroll } from '../helpers';
+import modalRepairTypes from '../modalRepairTypes';
 
-const menu = (block) => {
+const menu = (header) => {
   const menuBtnSelector = '.menu__icon';
 
   const menuBlock = document.querySelector('.popup-menu');
   const dialogMenu = menuBlock.querySelector('.popup-dialog-menu');
   const closeBtnSelector = '.close-menu';
-  const menuLinkSelector = '.menu-link';
+  const menuLinkSelector = '.popup-menu-nav__item';
 
-  const handlerMenu = (action = 'close') => {
+  const modalRepairTypesLinkSelector = '.repair-types-list';
+
+  const handler = (action = 'close') => {
     let show;
     if (action === 'toggle') {
       show = menuBlock.classList.toggle('active');
@@ -26,10 +29,10 @@ const menu = (block) => {
     }
   };
   // toggle menu
-  block.addEventListener('click', (e) => {
+  header.addEventListener('click', (e) => {
     const { target } = e;
     if (target.matches(menuBtnSelector)) {
-      handlerMenu('toggle');
+      handler('toggle');
     }
   });
 
@@ -38,12 +41,18 @@ const menu = (block) => {
     const { target } = e;
     // close menu
     if (target.matches(closeBtnSelector)) {
-      handlerMenu('close');
+      handler('close');
     }
     // menu-link
-    if (target.matches(menuLinkSelector)) {
-      handlerMenu('close');
+    if (target.closest(menuLinkSelector)) {
+      handler('close');
       smoothScroll(target);
+    }
+    // modalRepairTypes
+    if (target.matches(modalRepairTypesLinkSelector)) {
+      console.log('modalRepairTypesLinkSelector');
+      handler('close');
+      modalRepairTypes(true);
     }
   });
 };
