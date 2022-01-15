@@ -1,8 +1,16 @@
-const modalRepairTypes = (show) => {
-  const modal = document.querySelector('.popup-repair-types');
-  const dialog = modal.querySelector('.dialog-repair-types');
-  // repair-types-list
-  modal.style.visibility = show ? 'visible' : 'hidden';
-};
+export default class ModalRepairTypes {
+  constructor() {
+    this.modal = document.querySelector('.popup-repair-types');
+    if (this.modal) {
+      this.init();
+    }
+  }
 
-export default modalRepairTypes;
+  init() {
+    this.dialog = this.modal.querySelector('.dialog-repair-types');
+  }
+
+  toggle(show) {
+    this.modal.style.visibility = show ? 'visible' : 'hidden';
+  }
+}

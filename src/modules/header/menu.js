@@ -1,5 +1,5 @@
 import { smoothScroll } from '../helpers';
-import modalRepairTypes from '../modalRepairTypes';
+import ModalRepairTypes from '../modalRepairTypes';
 
 const menu = (header) => {
   const menuBtnSelector = '.menu__icon';
@@ -50,9 +50,9 @@ const menu = (header) => {
     }
     // modalRepairTypes
     if (target.matches(modalRepairTypesLinkSelector)) {
-      console.log('modalRepairTypesLinkSelector');
       handler('close');
-      modalRepairTypes(true);
+      const modalRepairTypes = new ModalRepairTypes();
+      modalRepairTypes.toggle(true);
     }
   });
 };
