@@ -4,6 +4,7 @@ import ModalPrivacy from './modules/modalPrivacy';
 import ModalRepairTypes from './modules/modalRepairTypes';
 import phoneMask from './modules/phoneMask';
 import formulaItemPopup from './modules/formulaItemPopup';
+import transparency from './modules/transparency/transparency';
 
 const modalRepairTypes = new ModalRepairTypes();
 const modalPrivacy = new ModalPrivacy();
@@ -11,6 +12,7 @@ const modalPrivacy = new ModalPrivacy();
 header();
 phoneMask();
 formulaItemPopup();
+transparency();
 
 const buttonFooter = document.querySelector('.footer .button-footer');
 buttonFooter.addEventListener('click', (e) => {
