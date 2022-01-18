@@ -18,9 +18,10 @@ const menu = (header) => {
       show = false;
     }
 
-    const windowOuterWidth = window.outerWidth;
+    const windowInnerWidth = window.innerWidth;
     const { width: dialogMenuWidth } = getComputedStyle(dialogMenu);
-    if (windowOuterWidth >= 576) {
+    console.log(windowInnerWidth);
+    if (windowInnerWidth >= 576) {
       dialogMenu.style.right = show ? dialogMenuWidth : 0;
     } else {
       dialogMenu.style.top = show ? '100vh' : 0;
