@@ -1,4 +1,4 @@
-export default class Slider {
+export default class Slider2 {
   constructor({ wrapper, slider, navigation, counters }) {
     if (wrapper) {
       this.wrapper = {
@@ -52,6 +52,10 @@ export default class Slider {
       this.state = { prev: null, current: 1, total: 0 };
 
       this.state.total = this.slides.length; // Set Total Slides
+
+      //
+      this.props = {};
+      this.props.slideWidth = getComputedStyle(this.slides[0]).getPropertyValue('width');
 
       // Hidden Slides
       this.toggleVisibilitySlides(true);
@@ -119,14 +123,19 @@ export default class Slider {
     this.afterChangeSlide();
   }
 
-  renderCounter() {
-    if (this.counters) {
-      this.counters.total.el.textContent = this.state.total;
-      this.counters.current.el.textContent = this.state.current;
-    }
+  togglePopup() {
+    const popupSelector = '.formula-item-popup';
+    const prevPopup = this.slides[this.state.prev - 1].querySelector(popupSelector);
+    const currentPopup = this.slides[this.state.current - 1].querySelector(popupSelector);
+
+    prevPopup.visibility = 'hidden';
+    prevPopup.opacity = 0.1;
+
+    currentPopup.visibility = 'visible';
+    currentPopup.opacity = 1;
   }
 
   afterChangeSlide() {
-    this.renderCounter();
+    this.togglePopup();
   }
 }
