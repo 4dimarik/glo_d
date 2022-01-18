@@ -17,18 +17,22 @@ export default class ModalTransparency extends Modal {
     const items = this.section.querySelectorAll('.transparency-item');
     this.activatedItemIndex = [...items].findIndex((item) => item === target);
 
-    const sliderElement = document.querySelector('.popup-transparency-slider');
-    const allSlide = document.querySelectorAll('.popup-transparency-slider__slide');
+    // const sliderElement = document.querySelector('.popup-transparency-slider');
+    // const allSlide = document.querySelectorAll('.popup-transparency-slider__slide');
+    //
+    // sliderElement.dataset.prevSlide = sliderElement.dataset.currentSlide;
+    // sliderElement.dataset.currentSlide = `${this.activatedItemIndex + 1}`;
+    //
+    // allSlide[+sliderElement.dataset.prevSlide - 1].classList.remove('active-slide');
+    // allSlide[+sliderElement.dataset.currentSlide - 1].classList.add('active-slide');
 
-    sliderElement.dataset.prevSlide = sliderElement.dataset.currentSlide;
-    sliderElement.dataset.currentSlide = `${this.activatedItemIndex + 1}`;
+    this.slider.setSliderProps({ current: this.activatedItemIndex + 1 });
 
-    allSlide[+sliderElement.dataset.prevSlide - 1].classList.remove('active-slide');
-    allSlide[+sliderElement.dataset.currentSlide - 1].classList.add('active-slide');
+    this.slider.changeSlide();
   }
 
   initSlider() {
-    slider({
+    this.slider = slider({
       body: this.body,
       counter: true,
       activeSlideClass: 'active-slide',

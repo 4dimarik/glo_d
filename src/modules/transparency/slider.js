@@ -8,29 +8,14 @@ const slider = ({ body, counter, activeSlideClass, ...selectors }) => {
   const allSlide = sliderElements.slider.querySelectorAll(selectors.slide);
   const slideCount = allSlide.length;
 
-  const { prevSlide: _prevSlide, currentSlide: _currentSlide } = sliderElements.slider.dataset;
+  let sliderProps = { prev: null, current: null, total: slideCount };
 
-  if (!_prevSlide) {
-    sliderElements.slider.dataset.prevSlide = null;
-  }
-  if (!_currentSlide) {
-    sliderElements.slider.dataset.currentSlide = '1';
-  }
-  sliderElements.slider.dataset.totalSlide = slideCount.toString();
-
-  let sliderProps = {};
-  const setSliderProps = () => {
-    const { prevSlide, currentSlide, totalSlide } = sliderElements.slider.dataset;
-    sliderProps = {
-      prev: prevSlide ? +prevSlide : null,
-      current: currentSlide ? +currentSlide : null,
-      total: +totalSlide,
-    };
+  const setSliderProps = (props = {}) => {
+    props.prev = props.current !== sliderProps.current ? sliderProps.current : null;
+    sliderProps = { ...sliderProps, ...props };
   };
 
   setSliderProps();
-
-  allSlide[sliderProps.current - 1].classList.add(activeSlideClass);
 
   const renderCounter = () => {
     if (counter) {
@@ -55,26 +40,27 @@ const slider = ({ body, counter, activeSlideClass, ...selectors }) => {
 
   sliderElements.wrapper.addEventListener('click', ({ target }) => {
     if (target.closest(selectors.nextBtn)) {
+      sliderProps.prev = sliderProps.current;
       const nextSlide = sliderProps.current + 1;
       if (nextSlide > sliderProps.total) {
-        sliderElements.slider.dataset.currentSlide = '1';
+        sliderProps.current = 1;
       } else {
-        sliderElements.slider.dataset.currentSlide = nextSlide.toString();
+        sliderProps.current = nextSlide;
       }
-      sliderElements.slider.dataset.prevSlide = sliderProps.current.toString();
     }
     if (target.closest(selectors.prevBtn)) {
+      sliderProps.prev = sliderProps.current;
       const nextSlide = sliderProps.current - 1;
       if (nextSlide < 1) {
-        sliderElements.slider.dataset.currentSlide = sliderProps.total.toString();
+        sliderProps.current = sliderProps.total;
       } else {
-        sliderElements.slider.dataset.currentSlide = nextSlide.toString();
+        sliderProps.current = nextSlide;
       }
-      sliderElements.slider.dataset.prevSlide = sliderProps.current.toString();
     }
-    setSliderProps();
     changeSlide();
   });
+
+  return { sliderProps, changeSlide, setSliderProps };
 };
 
 export default slider;
