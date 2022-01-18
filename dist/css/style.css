@@ -7906,7 +7906,9 @@ div.wave-block:nth-child(17):after {
 }
 
 .checkbox input[type="checkbox"] {
-    visibility: hidden;
+    /*visibility: hidden;*/
+  opacity: 0;
+
 }
 
 .checkbox input[type="checkbox"]:checked + label:after {

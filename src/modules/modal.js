@@ -9,21 +9,18 @@ export default class Modal {
     }
   }
 
-  init({ bodySelector, closeBtnSelector, modalLinkSelector, sectionId = null }) {
+  init({ bodySelector, closeBtnSelector, modalLinkSelector }) {
     this.body = this.modal.querySelector(bodySelector);
-    // this.closeBtn = this.modal.querySelector(closeBtnSelector);
 
     this.modal.addEventListener('click', (e) => {
-      e.preventDefault();
       const { target } = e;
       if (target.closest(closeBtnSelector)) {
-        // target === this.closeBtn
         this.toggle(false);
       }
     });
 
     document.addEventListener('click', (e) => {
-      e.preventDefault();
+      // e.preventDefault();
       const { target } = e;
       if (target.closest(modalLinkSelector)) {
         this.toggle(true);
