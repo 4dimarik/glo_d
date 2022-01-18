@@ -129,7 +129,6 @@ export default class Slider2 {
   changeSlide(direction) {
     switch (this.section) {
       case 'formula':
-
         break;
       case 'transparency':
         const currentSlideIndex = this.state.current - 1;
@@ -146,7 +145,6 @@ export default class Slider2 {
       default:
         break;
     }
-
   }
 
   toggleActiveClass() {
