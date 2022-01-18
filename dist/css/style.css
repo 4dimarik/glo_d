@@ -6,9 +6,38 @@
     font-style: normal;
     font-weight: normal;
 }
-.active {
-  display: block !important;
+
+/* дополнительные стили -->*/
+
+.formula-slider.formula-slider-active{
+  display: flex;
+  /*margin: 0;*/
+  padding-bottom: 280px;
+  overflow: hidden;
 }
+.formula-slider.formula-slider-active .formula-slider__slide{
+  margin: 1rem;
+  width: calc(100% / 3);
+}
+.formula-slider__slide.formula-slide-active{
+  z-index: 2;
+  opacity: 1;
+}
+.formula-slider__slide.formula-slide-active .formula-item-popup{
+  opacity: 1;
+  visibility: visible;
+}
+.formula-slider__slide.formula-slide-active .formula-item-popup.bottom:before {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.formula-slider__slide.formula-slide-active .formula-item__icon-inner{
+  opacity: 1;
+}
+/* <--дополнительные стили */
+/*.active {*/
+/*  display: block !important;*/
+/*}*/
 
 .active-slide {
   display: block !important;

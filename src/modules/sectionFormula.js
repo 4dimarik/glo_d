@@ -11,6 +11,7 @@ const sectionFormula = () => {
 
   const slider = new Slider2({
     wrapper: '#formula .formula-slider-wrap',
+    activeClass: 'formula-slide-active',
     slider: '.formula-slider',
     navigation: {
       prev: '#formula-arrow_left',
@@ -18,7 +19,7 @@ const sectionFormula = () => {
     },
   });
 
-  if (wrapper.type === 'mobile') slider.init();
+  if (wrapper.type === 'mobile') slider.init('formula').setState({ current: 2 }).toggleActiveClass();
 
   console.log(slider);
 

@@ -1,10 +1,12 @@
 export default class Slider2 {
-  constructor({ wrapper, slider, navigation, counters }) {
+  constructor({ wrapper, slider, activeClass = null, navigation, counters }) {
     if (wrapper) {
       this.wrapper = {
         selector: wrapper,
         el: document.querySelector(wrapper),
       };
+
+      this.activeClass = activeClass;
 
       if (slider) {
         this.slider = {
@@ -15,6 +17,7 @@ export default class Slider2 {
       } else {
         console.error(`Некорректно указан селектор slider: ${slider}`);
       }
+
       if (navigation) {
         this.navigation = {
           next: {
@@ -46,22 +49,31 @@ export default class Slider2 {
     }
   }
 
-  init() {
+  init(section) {
     if (!this.activated) {
       this.activated = true;
       this.state = { prev: null, current: 1, total: 0 };
+      this.section = section;
 
       this.state.total = this.slides.length; // Set Total Slides
 
       //
       this.props = {};
       this.props.slideWidth = getComputedStyle(this.slides[0]).getPropertyValue('width');
-
-      // Hidden Slides
-      this.toggleVisibilitySlides(true);
-
       // Set EventListener
       this.wrapper.el.addEventListener('click', this.eventListener.bind(this));
+
+      switch (section) {
+        case 'formula':
+          this.slider.el.classList.add('formula-slider-active');
+          break;
+        case 'transparency':
+          // Hidden Slides
+          this.toggleVisibilitySlides(true);
+          break;
+        default:
+          break;
+      }
     }
     return this;
   }
@@ -92,7 +104,7 @@ export default class Slider2 {
       }
     }
 
-    this.changeSlide();
+    this.changeSlide(direction);
   }
 
   toggleVisibilitySlides(hidden) {
@@ -105,6 +117,7 @@ export default class Slider2 {
         slide.style.display = null;
       });
     }
+    return this;
   }
 
   setState(props = {}) {
@@ -113,29 +126,55 @@ export default class Slider2 {
     return this;
   }
 
-  changeSlide() {
-    const currentSlideIndex = this.state.current - 1;
-    this.slides[currentSlideIndex].style.display = null;
-    if (this.state.prev) {
-      const prevSlideIndex = this.state.prev - 1;
-      this.slides[prevSlideIndex].style.display = 'none';
+  changeSlide(direction) {
+    switch (this.section) {
+      case 'formula':
+
+        break;
+      case 'transparency':
+        const currentSlideIndex = this.state.current - 1;
+        this.slides[currentSlideIndex].style.display = null;
+        if (this.state.prev) {
+          const prevSlideIndex = this.state.prev - 1;
+          this.slides[prevSlideIndex].style.display = 'none';
+        }
+        // Add/Remove class active slide
+        if (this.activeClass) {
+          this.toggleActiveClass();
+        }
+        break;
+      default:
+        break;
     }
-    this.afterChangeSlide();
+
   }
 
-  togglePopup() {
-    const popupSelector = '.formula-item-popup';
-    const prevPopup = this.slides[this.state.prev - 1].querySelector(popupSelector);
-    const currentPopup = this.slides[this.state.current - 1].querySelector(popupSelector);
-
-    prevPopup.visibility = 'hidden';
-    prevPopup.opacity = 0.1;
-
-    currentPopup.visibility = 'visible';
-    currentPopup.opacity = 1;
+  toggleActiveClass() {
+    if (this.state.prev) {
+      const prevPopup = this.slides[this.state.prev - 1];
+      console.log(prevPopup);
+      prevPopup.classList.remove(this.activeClass);
+    }
+    if (this.state.current) {
+      const currentPopup = this.slides[this.state.current - 1];
+      console.log(currentPopup);
+      currentPopup.classList.add(this.activeClass);
+    }
+    return this;
   }
 
-  afterChangeSlide() {
-    this.togglePopup();
+  afterChangeSlide(direction) {
+    switch (this.section) {
+      case 'formula':
+        if (direction > 0) {
+          this.slider.el.append(this.slides[0]);
+        }
+        this.slides = this.slider.el.querySelectorAll(':scope > *');
+        break;
+      case 'transparency':
+        break;
+      default:
+        break;
+    }
   }
 }
