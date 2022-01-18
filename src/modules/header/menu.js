@@ -20,7 +20,6 @@ const menu = (header) => {
 
     const windowInnerWidth = window.innerWidth;
     const { width: dialogMenuWidth } = getComputedStyle(dialogMenu);
-    console.log(windowInnerWidth);
     if (windowInnerWidth >= 576) {
       dialogMenu.style.right = show ? dialogMenuWidth : 0;
     } else {
