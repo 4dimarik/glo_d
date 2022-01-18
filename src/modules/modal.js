@@ -10,11 +10,10 @@ export default class Modal {
     }
   }
 
-  init({ bodySelector, closeBtnSelector, modalLinkSelector, sectionId = null }) {
+  init({ bodySelector, closeBtnSelector, modalLinkSelector }) {
     this.body = this.modal.querySelector(bodySelector);
 
     this.modal.addEventListener('click', (e) => {
-      e.preventDefault();
       const { target } = e;
       if (target.closest(closeBtnSelector)) {
         this.toggle(false);
@@ -23,7 +22,7 @@ export default class Modal {
     });
 
     document.addEventListener('click', (e) => {
-      e.preventDefault();
+      // e.preventDefault();
       const { target } = e;
       if (target.closest(modalLinkSelector)) {
         this.toggle(true);
