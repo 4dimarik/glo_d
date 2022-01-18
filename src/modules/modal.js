@@ -18,6 +18,7 @@ export default class Modal {
       const { target } = e;
       if (target.closest(closeBtnSelector)) {
         this.toggle(false);
+        this.afterClose();
       }
     });
 
@@ -30,11 +31,14 @@ export default class Modal {
       }
       if (target.matches(this.modalSelector)) {
         this.toggle(false);
+        this.afterClose();
       }
     });
   }
 
   afterOpen() {}
+
+  afterClose() {}
 
   toggle(show) {
     this.modal.style.visibility = show ? 'visible' : 'hidden';
