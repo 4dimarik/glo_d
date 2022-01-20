@@ -8,6 +8,9 @@
 }
 
 /* дополнительные стили -->*/
+.d-none {
+  display: none;
+}
 .formula-slider-wrap{
   overflow: hidden;
 }
