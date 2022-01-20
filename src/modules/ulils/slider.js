@@ -190,6 +190,11 @@ export default class Slider {
     this.slides.forEach((slide) => {
       slide.style = null;
     });
+    this.slider.el.innerHTML = '';
+    this.slides.forEach((slide) => {
+      this.slider.el.append(slide);
+    });
+
     return this;
   }
 }
