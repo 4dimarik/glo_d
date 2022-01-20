@@ -7,6 +7,9 @@ const transparency = () => {
   const slider = new Slider({
     wrapper: '.transparency-slider-wrap',
     slider: '.transparency-slider',
+    sliderClass: 'transparency-slider-active',
+    activeClass: 'transparency-slide-active',
+    slidesPerView: 1,
     navigation: {
       next: '#transparency-arrow_right',
       prev: '#transparency-arrow_left',
@@ -16,7 +19,7 @@ const transparency = () => {
   const toggleSlider = () => {
     if (window.innerWidth < 1090) {
       slider.init();
-    } else {
+    } else if (slider.activated) {
       slider.destroy();
     }
   };

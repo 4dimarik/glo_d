@@ -4,8 +4,7 @@ import ModalPrivacy from './modules/modalPrivacy';
 import ModalRepairTypes from './modules/modalRepairTypes';
 import ModalConsultation from './modules/modalConsultation';
 import phoneMask from './modules/phoneMask';
-// import formulaItemPopup from './modules/formulaItemPopup';
-import sectionFormula from './modules/sectionFormula';
+import sectionFormula from './modules/formula/sectionFormula';
 import transparency from './modules/transparency/transparency';
 
 const modalRepairTypes = new ModalRepairTypes();
@@ -14,7 +13,7 @@ const modalConsultation = new ModalConsultation();
 
 header();
 phoneMask();
-// formulaItemPopup();
+
 sectionFormula();
 transparency();
 sendForm();

@@ -1,5 +1,5 @@
 import Modal from '../modal';
-import Slider from '../ulils/slider';
+import TransparencySlider from './transparencySlider';
 
 export default class ModalTransparency extends Modal {
   constructor() {
@@ -11,18 +11,8 @@ export default class ModalTransparency extends Modal {
       closeBtnSelector: '.close',
     });
 
-    this.slider = new Slider({
-      wrapper: '.popup-transparency-slider-wrap',
-      slider: '.popup-transparency-slider',
-      navigation: {
-        prev: '.popup-arrow_transparency_left',
-        next: '.popup-arrow_transparency_right',
-      },
-      counters: {
-        current: '.slider-counter-content__current',
-        total: '.slider-counter-content__total',
-      },
-    });
+    this.slider = new TransparencySlider();
+    console.log(this.slider);
   }
 
   afterOpen(target) {

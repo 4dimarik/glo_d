@@ -8,16 +8,36 @@
 }
 
 /* дополнительные стили -->*/
-
-.formula-slider.formula-slider-active{
-  display: flex;
-  /*margin: 0;*/
-  padding-bottom: 280px;
+.formula-slider-wrap{
   overflow: hidden;
 }
+.formula-slider.formula-slider-active{
+  margin-left: 3rem;
+  margin-right: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.transparency-slider-active{
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  width:453px;
+  margin: auto;
+}
+.transparency-slider-active .transparency-item{
+  transition: all ease 500ms;
+  position: absolute;
+  top:0;
+  left:0;
+  width:453px;
+}
+
+
 .formula-slider.formula-slider-active .formula-slider__slide{
-  margin: 1rem;
-  width: calc(100% / 3);
+  transition: all ease 500ms;
+  position: absolute;
+  top:0;
+  left:0;
 }
 .formula-slider__slide.formula-slide-active{
   z-index: 2;
@@ -27,11 +47,11 @@
   opacity: 1;
   visibility: visible;
 }
-.formula-slider__slide.formula-slide-active .formula-item-popup.bottom:before {
+.formula-item-popup.bottom:before {
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-.formula-slider__slide.formula-slide-active .formula-item__icon-inner{
+.formula-item__icon.active .formula-item__icon-inner{
   opacity: 1;
 }
 /* <--дополнительные стили */
@@ -2468,6 +2488,7 @@ div.wave-block:nth-child(17):after {
 
 .transparency-slider-wrap {
     margin-top: 150px;
+    height: 452px; // **
 }
 
 @media (max-width: 1024px) {

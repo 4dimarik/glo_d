@@ -1,4 +1,4 @@
-export default class Slider2 {
+export default class Slider {
   constructor({ wrapper, slider, activeClass = null, navigation, counters }) {
     if (wrapper) {
       this.wrapper = {
