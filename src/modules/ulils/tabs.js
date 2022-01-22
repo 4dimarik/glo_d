@@ -12,7 +12,11 @@ export default class Tabs {
     this.tabItems.forEach((item, index) => {
       if (index > 0) {
         item.classList.add('d-none');
+        item.dataset.tabIndex = index;
       }
+    });
+    this.navItems.forEach((item, index) => {
+      item.dataset.tabIndex = index;
     });
     this.setEvents();
   }
@@ -31,7 +35,10 @@ export default class Tabs {
             this.tabItems[index].classList.add('d-none');
           }
         });
+        this.afterChoose(target.dataset.tabIndex);
       }
     });
   }
+
+  afterChoose() {}
 }

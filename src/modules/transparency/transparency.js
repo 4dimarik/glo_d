@@ -1,5 +1,4 @@
 import ModalTransparency from './modalTransparency';
-// import Slider from '../ulils/slider';
 import Slider3 from '../ulils/slider3';
 
 const transparency = () => {

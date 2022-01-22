@@ -159,12 +159,10 @@ export default class Slider3 {
   eventListener({ target }) {
     const nextBtn = this.navigation.next.el;
     const prevBtn = this.navigation.prev.el;
-    console.log(prevBtn);
     if (target.closest(this.navigation.next.selector)) {
       // if (!this.loop && this.props.lastIndex === this.props.currentIndex) {
       //   return;
       // }
-      console.log('next', this.props.currentIndex, this.slidesPerView, this.props.lastIndex);
       if (!this.loop && this.props.currentIndex + this.slidesPerView === this.props.lastIndex) {
         nextBtn.classList.add('d-none');
         prevBtn.classList.remove('d-none');
@@ -209,7 +207,7 @@ export default class Slider3 {
   }
 
   changeSlide(direction, slideIndex = null) {
-    console.log('START CHANGE', JSON.stringify(this.props));
+    // console.log('START CHANGE', JSON.stringify(this.props));
     // prevSlide
     const prevSlide = this.getSlide(this.props.activeSlide);
     prevSlide.classList.remove(this.activeClass);
@@ -271,7 +269,7 @@ export default class Slider3 {
     if (this.counters) {
       this.counters.current.el.textContent = this.props.currentIndex + 1;
     }
-    console.log('END CHANGE', JSON.stringify(this.props));
+    // console.log('END CHANGE', JSON.stringify(this.props));
   }
 
   activate() {

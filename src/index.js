@@ -6,7 +6,7 @@ import ModalConsultation from './modules/modalConsultation';
 import phoneMask from './modules/phoneMask';
 import sectionFormula from './modules/sectionFormula';
 import transparency from './modules/transparency/transparency';
-import repairTypes from './modules/repair-types/repairTypes';
+import repairTypes from './modules/repairTypes';
 import Slider3 from './modules/ulils/slider3';
 import sectionPortfolio from './modules/sectionPortfolio';
 

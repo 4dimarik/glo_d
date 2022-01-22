@@ -15,7 +15,7 @@
   overflow: hidden;
 }
 .xSlider__slider-wrapper{
-  display: flex;
+  display: flex !important;
 
 }
 .xSlider__btn{
