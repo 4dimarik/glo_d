@@ -18,7 +18,6 @@ const sectionFormula = () => {
       next: '#formula-arrow_right',
     },
   });
-  console.log(slider);
 
   if (window.innerWidth < 1024) slider.init('formula');
 

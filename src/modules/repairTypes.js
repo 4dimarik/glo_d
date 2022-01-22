@@ -33,7 +33,6 @@ const repairTypes = () => {
   });
 
   tabs.afterChoose = (activeTabIndex) => {
-    console.log(activeTabIndex);
     slider.destroy();
     sliderProps.slider = `.types-repair${+activeTabIndex + 1}`;
     slider = new Slider3(sliderProps);
@@ -56,7 +55,6 @@ const repairTypes = () => {
   window.addEventListener('resize', () => {
     if (window.innerWidth < 1024) {
       tabSlider.init('repair-types');
-      console.log(tabSlider);
     } else if (slider.activated) {
       tabSlider.destroy();
     }
