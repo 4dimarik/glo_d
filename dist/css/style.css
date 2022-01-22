@@ -30,7 +30,7 @@
   display: flex !important;
 }
 .d-none {
-  display: none;
+  display: none !important;
 }
 .nav-list-repair-active{
   position: relative;
@@ -45,37 +45,40 @@
   left:0;
   min-width:259px;
 }
-.formula-slider-wrap{
-  overflow: hidden;
-}
-.formula-slider.formula-slider-active{
-  margin-left: 3rem;
-  margin-right: 3rem;
-  position: relative;
-  overflow: hidden;
-}
-.transparency-slider-active{
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  width:453px;
-  margin: auto;
-}
-.transparency-slider-active .transparency-item{
-  transition: all ease 500ms;
-  position: absolute;
-  top:0;
-  left:0;
-  width:453px;
-}
+/*.formula-slider-wrap{*/
+/*  overflow: hidden;*/
+/*}*/
+/*.formula-slider.formula-slider-active{*/
+/*  margin-left: 3rem;*/
+/*  margin-right: 3rem;*/
+/*  position: relative;*/
+/*  overflow: hidden;*/
+/*}*/
 
 
-.formula-slider.formula-slider-active .formula-slider__slide{
-  transition: all ease 500ms;
-  position: absolute;
-  top:0;
-  left:0;
-}
+
+/*.transparency-slider-active{*/
+/*  height: 100%;*/
+/*  position: relative;*/
+/*  overflow: hidden;*/
+/*  width:453px;*/
+/*  margin: auto;*/
+/*}*/
+/*.transparency-slider-active .transparency-item{*/
+/*  transition: all ease 500ms;*/
+/*  position: absolute;*/
+/*  top:0;*/
+/*  left:0;*/
+/*  width:453px;*/
+/*}*/
+
+
+/*.formula-slider.formula-slider-active .formula-slider__slide{*/
+/*  transition: all ease 500ms;*/
+/*  position: absolute;*/
+/*  top:0;*/
+/*  left:0;*/
+/*}*/
 .formula-slider__slide.formula-slide-active{
   z-index: 2;
   opacity: 1;

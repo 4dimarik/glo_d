@@ -1,5 +1,5 @@
 import Modal from '../modal';
-import TransparencySlider from './transparencySlider';
+import Slider3 from '../ulils/slider3';
 
 export default class ModalTransparency extends Modal {
   constructor() {
@@ -11,15 +11,24 @@ export default class ModalTransparency extends Modal {
       closeBtnSelector: '.close',
     });
 
-    this.slider = new TransparencySlider();
-    console.log(this.slider);
+    this.slider = new Slider3({
+      wrapper: '.popup-transparency-slider-wrap',
+      slider: '.popup-transparency-slider',
+      navigation: {
+        prev: '.popup-arrow_transparency_left',
+        next: '.popup-arrow_transparency_right',
+      },
+      counters: {
+        current: '.slider-counter-content__current',
+        total: '.slider-counter-content__total',
+      },
+    });
   }
 
   afterOpen(target) {
     this.slider.init();
-    const items = this.section.querySelectorAll('.transparency-item__img');
-    this.activatedItemIndex = [...items].findIndex((item) => item === target);
-    this.slider.setState({ current: this.activatedItemIndex + 1 }).changeSlide();
+    const { slideIndex } = target.closest('.transparency-item').dataset;
+    this.slider.changeSlide(0, +slideIndex);
   }
 
   afterClose() {

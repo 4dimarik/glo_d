@@ -8,6 +8,7 @@ import sectionFormula from './modules/sectionFormula';
 import transparency from './modules/transparency/transparency';
 import repairTypes from './modules/repair-types/repairTypes';
 import Slider3 from './modules/ulils/slider3';
+import sectionPortfolio from './modules/sectionPortfolio';
 
 const modalRepairTypes = new ModalRepairTypes();
 const modalPrivacy = new ModalPrivacy();
@@ -19,6 +20,7 @@ sectionFormula();
 transparency();
 sendForm();
 repairTypes();
+sectionPortfolio();
 
 const buttonFooter = document.querySelector('.footer .button-footer');
 buttonFooter.addEventListener('click', (e) => {
@@ -35,6 +37,7 @@ const reviewsSlider = new Slider3({
   activeClass: 'x-active',
   slidesPerView: 1,
   duration: 500,
+  loop: true,
   navigation: {
     next: '#reviews-arrow_right',
     prev: '#reviews-arrow_left',
