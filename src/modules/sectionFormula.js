@@ -1,4 +1,4 @@
-import FormulaSlider from './formulaSlider';
+import Slider3 from './ulils/slider3';
 
 const sectionFormula = () => {
   const section = document.getElementById('formula');
@@ -6,7 +6,18 @@ const sectionFormula = () => {
   const wrapperDesktop = section.querySelector('.wrapper_small.tablet-hide');
   const wrapperMobile = section.querySelector('.wrapper_small.desktop-hide');
 
-  const slider = new FormulaSlider();
+  const slider = new Slider3({
+    wrapper: '#formula .formula-slider-wrap',
+    sliderClass: 'formula-slider-active',
+    activeClass: 'formula-slide-active',
+    duration: 500,
+    slidesPerView: 3,
+    slider: '.formula-slider',
+    navigation: {
+      prev: '#formula-arrow_left',
+      next: '#formula-arrow_right',
+    },
+  });
   console.log(slider);
 
   if (window.innerWidth < 1024) slider.init('formula');

@@ -65,9 +65,9 @@ export default class Slider {
       this.activated = true;
       if (this.sliderClass) this.slider.el.classList.add(this.sliderClass);
 
-      this.sliderWidth = this.slider.el.offsetWidth;
+      this.sliderWidth = this.wrapper.el.offsetWidth;
       this.slideWidth = +this.sliderWidth / this.slidesPerView;
-      this.slideLeft = this.slideWidth + 20;
+      this.slideLeft = this.slideWidth;
 
       this.activeSlide = 0;
       this.prevSlide = null;

@@ -8,8 +8,42 @@
 }
 
 /* дополнительные стили -->*/
+.xSlider{
+
+}
+.xSlider__slider {
+  overflow: hidden;
+}
+.xSlider__slider-wrapper{
+  display: flex;
+
+}
+.xSlider__btn{
+
+}
+
+
+.d-block{
+  display: block !important;
+}
+.d-flex{
+  display: flex !important;
+}
 .d-none {
   display: none;
+}
+.nav-list-repair-active{
+  position: relative;
+  overflow: hidden;
+  width:709px;
+  height: 40px;
+}
+.nav-list-repair-active .repair-types-nav__item{
+  transition: all ease 500ms;
+  position: absolute;
+  top:0;
+  left:0;
+  min-width:259px;
 }
 .formula-slider-wrap{
   overflow: hidden;
@@ -57,11 +91,6 @@
 .formula-item__icon.active .formula-item__icon-inner{
   opacity: 1;
 }
-/* <--дополнительные стили */
-/*.active {*/
-/*  display: block !important;*/
-/*}*/
-
 .active-slide {
   display: block !important;
 }

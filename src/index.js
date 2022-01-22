@@ -4,9 +4,10 @@ import ModalPrivacy from './modules/modalPrivacy';
 import ModalRepairTypes from './modules/modalRepairTypes';
 import ModalConsultation from './modules/modalConsultation';
 import phoneMask from './modules/phoneMask';
-import sectionFormula from './modules/formula/sectionFormula';
+import sectionFormula from './modules/sectionFormula';
 import transparency from './modules/transparency/transparency';
 import repairTypes from './modules/repair-types/repairTypes';
+import Slider3 from './modules/ulils/slider3';
 
 const modalRepairTypes = new ModalRepairTypes();
 const modalPrivacy = new ModalPrivacy();
@@ -27,3 +28,22 @@ buttonFooter.addEventListener('click', (e) => {
     smoothScroll(target);
   }
 });
+
+const reviewsSlider = new Slider3({
+  wrapper: '.reviews-slider-wrap',
+  slider: '.reviews-slider',
+  activeClass: 'x-active',
+  slidesPerView: 1,
+  duration: 500,
+  navigation: {
+    next: '#reviews-arrow_right',
+    prev: '#reviews-arrow_left',
+  },
+  dots: {
+    blockSelector: '#reviews .slider-dots-reviews',
+    class: 'dot-reviews',
+    activeClass: 'dot_active',
+  },
+});
+
+reviewsSlider.init();
