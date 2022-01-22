@@ -9,6 +9,7 @@ import transparency from './modules/transparency/transparency';
 import repairTypes from './modules/repairTypes';
 import Slider3 from './modules/ulils/slider3';
 import sectionPortfolio from './modules/sectionPortfolio';
+import sectionFAQ from './modules/sectionFAQ';
 
 const modalRepairTypes = new ModalRepairTypes();
 const modalPrivacy = new ModalPrivacy();
@@ -21,6 +22,7 @@ transparency();
 sendForm();
 repairTypes();
 sectionPortfolio();
+sectionFAQ();
 
 const buttonFooter = document.querySelector('.footer .button-footer');
 buttonFooter.addEventListener('click', (e) => {
