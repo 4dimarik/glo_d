@@ -1,5 +1,5 @@
-import Tabs from './ulils/tabs';
-import Slider3 from './ulils/slider3';
+import Tabs from '../ulils/tabs';
+import Slider3 from '../ulils/slider3';
 
 const repairTypes = () => {
   const section = document.getElementById('repair-types');

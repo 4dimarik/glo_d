@@ -1,19 +1,24 @@
 import header from './modules/header/header';
 import smoothScroll from './modules/ulils/smoothScroll';
 import ModalPrivacy from './modules/modalPrivacy';
-import ModalRepairTypes from './modules/modalRepairTypes';
+import ModalRepairTypesList from './modules/repair-types/modalRepairTypesList';
 import ModalConsultation from './modules/modalConsultation';
 import phoneMask from './modules/phoneMask';
 import sectionFormula from './modules/sectionFormula';
 import transparency from './modules/transparency/transparency';
-import repairTypes from './modules/repairTypes';
+import repairTypes from './modules/repair-types/repairTypes';
 import Slider3 from './modules/ulils/slider3';
 import sectionPortfolio from './modules/sectionPortfolio';
 import sectionFAQ from './modules/sectionFAQ';
 import validation from './modules/validation';
 import ModalPopupThank from './modules/modalPopupThank';
+import RepairTypeService from './modules/ulils/repairTypeService';
 
-const modalRepairTypes = new ModalRepairTypes();
+window.repairTypeService = new RepairTypeService();
+/* eslint no-undef: "off" */
+repairTypeService.logger();
+
+const modalRepairTypes = new ModalRepairTypesList();
 const modalPrivacy = new ModalPrivacy();
 const modalConsultation = new ModalConsultation();
 
