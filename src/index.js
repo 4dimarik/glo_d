@@ -15,8 +15,6 @@ import ModalPopupThank from './modules/modalPopupThank';
 import RepairTypeService from './modules/ulils/repairTypeService';
 
 window.repairTypeService = new RepairTypeService();
-/* eslint no-undef: "off" */
-repairTypeService.logger();
 
 const modalRepairTypes = new ModalRepairTypesList();
 const modalPrivacy = new ModalPrivacy();

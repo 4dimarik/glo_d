@@ -23,7 +23,7 @@ export default class ModalConsultation extends Modal {
         formData.forEach((val, key) => {
           data[key] = val;
         });
-        sendData({ url: '../server.php', method: 'POST', data });
+        sendData({ url: '../server.php', method: 'POST', data }).then();
         this.toggle(false);
         modalPopupThank.toggle(true);
       }
