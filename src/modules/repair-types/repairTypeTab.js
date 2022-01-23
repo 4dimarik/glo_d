@@ -30,7 +30,6 @@ export default class RepairTypeTab extends Tabs {
     repairTypeService.getRepairType().then((res) => {
       if (res.ok) {
         const repairs = res.data.filter((item) => item.type === type);
-        console.log(type, repairs);
         this.renderTableRow(repairs, index);
       }
     });
