@@ -1,4 +1,11 @@
-{ "repairTypes" :
+{
+  "users": [
+    {
+      "login": "user",
+      "password": "12345678"
+    }
+  ],
+  "repairTypes" :
 [
     {
         "type": "Потолок: Демонтажные работы",
