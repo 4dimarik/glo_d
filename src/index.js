@@ -1,5 +1,5 @@
 import header from './modules/header/header';
-import { smoothScroll, sendForm } from './modules/helpers';
+import smoothScroll from './modules/ulils/smoothScroll';
 import ModalPrivacy from './modules/modalPrivacy';
 import ModalRepairTypes from './modules/modalRepairTypes';
 import ModalConsultation from './modules/modalConsultation';
@@ -10,6 +10,8 @@ import repairTypes from './modules/repairTypes';
 import Slider3 from './modules/ulils/slider3';
 import sectionPortfolio from './modules/sectionPortfolio';
 import sectionFAQ from './modules/sectionFAQ';
+import validation from './modules/validation';
+import ModalPopupThank from './modules/modalPopupThank';
 
 const modalRepairTypes = new ModalRepairTypes();
 const modalPrivacy = new ModalPrivacy();
@@ -19,10 +21,10 @@ header();
 phoneMask();
 sectionFormula();
 transparency();
-sendForm();
 repairTypes();
 sectionPortfolio();
 sectionFAQ();
+validation();
 
 const buttonFooter = document.querySelector('.footer .button-footer');
 buttonFooter.addEventListener('click', (e) => {
@@ -30,6 +32,17 @@ buttonFooter.addEventListener('click', (e) => {
   const { target } = e;
   if (target.closest('.button-footer')) {
     smoothScroll(target);
+  }
+});
+
+document.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (!e.target.closest('.popup')) {
+    const modalPopupThank = new ModalPopupThank();
+    const form = e.target.closest('form');
+    if (form.checkValidity()) {
+      modalPopupThank.toggle(true);
+    }
   }
 });
 

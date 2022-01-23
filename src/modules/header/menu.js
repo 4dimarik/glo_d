@@ -1,4 +1,4 @@
-import { smoothScroll } from '../helpers';
+import smoothScroll from '../ulils/smoothScroll';
 
 const menu = (header) => {
   const menuBtnSelector = '.menu__icon';

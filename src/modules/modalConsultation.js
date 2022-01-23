@@ -1,4 +1,5 @@
 import Modal from './modal';
+import ModalPopupThank from './modalPopupThank';
 
 export default class ModalConsultation extends Modal {
   constructor() {
@@ -10,5 +11,15 @@ export default class ModalConsultation extends Modal {
     });
   }
 
-  afterOpen() {}
+  afterOpen() {
+    this.modal.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const modalPopupThank = new ModalPopupThank();
+      const form = e.target.closest('form');
+      if (form.checkValidity()) {
+        this.toggle(false);
+        modalPopupThank.toggle(true);
+      }
+    });
+  }
 }
