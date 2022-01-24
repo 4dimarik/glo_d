@@ -11,6 +11,7 @@ export default class Slider3 {
     dots,
     loop = true,
     slideMinWidth = null,
+    setMinWidth = true,
   }) {
     if (wrapper) {
       this.activated = false;
@@ -18,6 +19,7 @@ export default class Slider3 {
       this.slidesPerView = slidesPerView;
       this.duration = duration;
       this.slideMinWidth = slideMinWidth;
+      this.setMinWidth = setMinWidth;
 
       this.wrapper = {
         selector: wrapper,
@@ -124,16 +126,18 @@ export default class Slider3 {
       // Counters
       if (this.counters) {
         this.counters.total.el.textContent = this.props.count;
+        this.counters.current.el.textContent = 1;
       }
     }
-    // console.log(this.wrapper.selector, this.props);
     return this;
   }
 
   renderSlide() {
     this.slides.forEach((slide, index) => {
       slide.dataset.slideIndex = index;
-      slide.style.minWidth = this.slideMinWidth ? `${this.slideMinWidth}px` : `${Math.abs(this.props.translateX)}px`;
+      if (this.setMinWidth) {
+        slide.style.minWidth = this.slideMinWidth ? `${this.slideMinWidth}px` : `${Math.abs(this.props.translateX)}px`;
+      }
     });
     if (this.loop) {
       for (let i = 0; i < this.slidesPerView; i++) {
@@ -163,23 +167,30 @@ export default class Slider3 {
       // if (!this.loop && this.props.lastIndex === this.props.currentIndex) {
       //   return;
       // }
+      this.showBtn(prevBtn);
       if (!this.loop && this.props.currentIndex + this.slidesPerView === this.props.lastIndex) {
         nextBtn.classList.add('d-none');
-        prevBtn.classList.remove('d-none');
-        prevBtn.classList.add('d-flex');
+        // prevBtn.classList.remove('d-none');
+        // prevBtn.classList.add('d-flex');
       }
       this.changeSlide(1);
     } else if (target.closest(this.navigation.prev.selector)) {
       // if (!this.loop && this.props.currentIndex === 0) {
       //   return;
       // }
+      this.showBtn(nextBtn);
       if (!this.loop && this.props.currentTranslateX + this.props.translateX === 0) {
         prevBtn.classList.add('d-none');
-        nextBtn.classList.remove('d-none');
-        nextBtn.classList.add('d-flex');
+        // nextBtn.classList.remove('d-none');
+        // nextBtn.classList.add('d-flex');
       }
       this.changeSlide(-1);
     }
+  }
+
+  showBtn(btn) {
+    btn.classList.remove('d-none');
+    btn.classList.add('d-flex');
   }
 
   toggleBtn(btn) {
@@ -280,6 +291,7 @@ export default class Slider3 {
 
   destroy() {
     this.activated = false;
+    this.slider.el.classList.remove('xSlider__slider');
     this.slider.el.innerHTML = this.sliderHTML;
     return this;
   }

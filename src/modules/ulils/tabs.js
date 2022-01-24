@@ -26,6 +26,7 @@ export default class Tabs {
       const { target } = e;
       const navItem = target.closest(this.tabPanelItemSelectors.navItemSelector);
       if (navItem) {
+        this.navItems = this.tabPanel.querySelectorAll(this.tabPanelItemSelectors.navItemSelector);
         this.navItems.forEach((item, index) => {
           if (item === navItem) {
             item.classList.add('active');

@@ -13,6 +13,7 @@ import sectionFAQ from './modules/sectionFAQ';
 import validation from './modules/validation';
 import ModalPopupThank from './modules/modalPopupThank';
 import RepairTypeService from './modules/ulils/repairTypeService';
+import sendData from './modules/ulils/sendData';
 
 window.repairTypeService = new RepairTypeService();
 
@@ -44,6 +45,17 @@ document.addEventListener('submit', (e) => {
     const modalPopupThank = new ModalPopupThank();
     const form = e.target.closest('form');
     if (form.checkValidity()) {
+      let formData = new FormData(form);
+      const data = {};
+      formData.forEach((val, key) => {
+        data[key] = val;
+      });
+
+      sendData({ url: 'https://jsonplaceholder.typicode.com/posts', method: 'POST', data }).then((res) => {
+        if (res.ok) {
+          console.log('Форма отправлена.');
+        }
+      });
       modalPopupThank.toggle(true);
     }
   }

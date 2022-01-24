@@ -9,5 +9,9 @@ export default class ModalPopupThank extends Modal {
     });
   }
 
-  afterOpen() {}
+  afterOpen() {
+    setTimeout(() => {
+      this.toggle(false);
+    }, 2000);
+  }
 }

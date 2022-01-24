@@ -23,7 +23,12 @@ export default class ModalConsultation extends Modal {
         formData.forEach((val, key) => {
           data[key] = val;
         });
-        sendData({ url: '../server.php', method: 'POST', data }).then();
+
+        sendData({ url: 'https://jsonplaceholder.typicode.com/posts', method: 'POST', data }).then((res) => {
+          if (res.ok) {
+            console.log('Форма отправлена.');
+          }
+        });
         this.toggle(false);
         modalPopupThank.toggle(true);
       }
