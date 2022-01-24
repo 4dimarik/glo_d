@@ -12,7 +12,7 @@ export default class ModalRepairTypesList extends Modal {
       closeBtnSelector: '.close',
     });
 
-    // const tabs = new RepairTypeTab();
+    const tabs = new RepairTypeTab();
   }
 
   afterOpen() {}
