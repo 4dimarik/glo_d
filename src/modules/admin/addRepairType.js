@@ -1,7 +1,7 @@
 import render from './render';
 import RepairTypeService from '../ulils/repairTypeService';
 
-const addRepairType = () => {
+const addRepairType = (toggleModal) => {
   const modalForm = document.querySelector('#modal form');
 
   const getFormData = (form) => {
@@ -22,6 +22,7 @@ const addRepairType = () => {
       const { ok: isAddOk } = await repairTypeService.addRepairTypes(getFormData(form));
       if (isAddOk) {
         form.reset();
+        toggleModal(false);
         const { ok: isGetOk, data } = await repairTypeService.getRepairTypes();
         if (isGetOk) {
           render(data);

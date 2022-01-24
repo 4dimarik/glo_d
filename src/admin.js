@@ -31,8 +31,8 @@ const run = async () => {
 };
 
 if (isAuthorized) {
-  editRepairTypeField();
+  editRepairTypeField(modalEdit.toggle.bind(modalEdit));
   removeRepairTypeField();
-  addRepairType();
+  addRepairType(modalEdit.toggle.bind(modalEdit));
   run();
 }

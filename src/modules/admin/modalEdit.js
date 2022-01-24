@@ -39,9 +39,11 @@ export default class ModalEdit extends Modal {
 
         const { ok, data } = await this.repairTypeService.getRepairType(id);
         if (ok) {
-          console.log(data);
           Object.keys(data).forEach((name) => {
-            this.form.querySelector(`*[name=${name}]`).value = data[name];
+            const field = this.form.querySelector(`*[name=${name}]`);
+            if (field) {
+              field.value = data[name];
+            }
           });
         }
       }
