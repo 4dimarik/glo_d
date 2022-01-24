@@ -26,6 +26,7 @@ export default class ModalTransparency extends Modal {
   }
 
   afterOpen(target) {
+    console.log(target);
     this.slider.init();
     const { slideIndex } = target.closest('.transparency-item').dataset;
     this.slider.changeSlide(0, +slideIndex);

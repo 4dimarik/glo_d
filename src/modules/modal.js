@@ -22,11 +22,9 @@ export default class Modal {
     });
 
     document.addEventListener('click', (e) => {
-      // e.preventDefault();
       const { target } = e;
       if (target.closest(modalLinkSelector)) {
-        this.toggle(true);
-        this.afterOpen(target.closest(modalLinkSelector));
+        this.toggle(true, target.closest(modalLinkSelector));
       }
       if (target.matches(this.modalSelector)) {
         this.toggle(false);
