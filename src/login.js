@@ -1,4 +1,4 @@
-import validator from './validator';
+import validator from './modules/admin/validator';
 
 const login = async () => {
   const validatorConfigFirst = {
@@ -26,8 +26,9 @@ const login = async () => {
       block.textContent = errors[name] || '';
     });
   };
+  const loginForm = document.querySelector('.main-form form');
 
-  document.addEventListener('submit', async (e) => {
+  loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const form = e.target.closest('form');
@@ -54,4 +55,4 @@ const login = async () => {
   });
 };
 
-export default login;
+login();

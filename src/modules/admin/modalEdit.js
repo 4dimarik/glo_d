@@ -1,47 +1,50 @@
 import Modal from '../modal';
+import RepairTypeService from '../ulils/repairTypeService';
 
 export default class ModalEdit extends Modal {
   constructor() {
     super({
       modalSelector: '#modal',
-      modalLinkSelector: '.btn-addItem',
+      modalLinkSelector: '.btn-modal',
       bodySelector: '.modal',
       closeBtnSelector: '.button__close',
     });
 
-    this.modal.addEventListener('click', this.eventListener.bind(this));
+    this.header = this.modal.querySelector('.modal__header');
+    this.saveBtn = this.modal.querySelector('.button-ui_firm');
+    this.form = this.modal.querySelector('form');
+    this.modal.addEventListener('click', this.clickEventListener.bind(this));
+
+    this.repairTypeService = new RepairTypeService();
   }
 
-  eventListener(e) {
-    e.preventDefault();
-    const btn = e.target.closest('button');
-    if (btn) {
-      const { action } = btn.dataset;
-      if (action === 'close') {
-        this.toggle(false);
-      } else if (action === 'save') {
-        console.log('save');
-      }
+  clickEventListener(e) {
+    if (e.target.closest('.cancel-button')) {
+      e.preventDefault();
+      this.toggle(false);
     }
   }
 
-  afterOpen(target) {
-    console.log(target);
+  async afterOpen(target) {
     if (target) {
-      const { action } = target.dataset;
+      const { action, id } = target.dataset;
       if (action === 'add') {
-        this.actionAdd();
+        this.header.textContent = 'Добавление новой услуги';
+        this.form.dataset.action = 'add';
+        this.form.dataset.id = id;
       } else if (action === 'change') {
-        this.actionChange();
+        this.header.textContent = 'Редактировать услугу';
+        this.form.dataset.action = 'change';
+        this.form.dataset.id = id;
+
+        const { ok, data } = await this.repairTypeService.getRepairType(id);
+        if (ok) {
+          console.log(data);
+          Object.keys(data).forEach((name) => {
+            this.form.querySelector(`*[name=${name}]`).value = data[name];
+          });
+        }
       }
     }
-  }
-
-  actionAdd() {
-    console.log('add');
-  }
-
-  actionChange() {
-    console.log('change');
   }
 }

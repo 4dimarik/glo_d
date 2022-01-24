@@ -7,6 +7,7 @@ module.exports = {
   entry: {
     main: './index.js',
     admin: './admin.js',
+    login: './login.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -17,7 +18,7 @@ module.exports = {
     hot: true,
     static: {
       directory: path.join(__dirname, 'dist'),
-      watch: true,
+      watch: false,
     },
   },
 };
