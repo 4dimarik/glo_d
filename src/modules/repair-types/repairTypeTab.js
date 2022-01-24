@@ -1,4 +1,5 @@
 import Tabs from '../ulils/tabs';
+import sendData from '../ulils/sendData';
 
 export default class RepairTypeTab extends Tabs {
   constructor() {
@@ -26,10 +27,9 @@ export default class RepairTypeTab extends Tabs {
     const tabHeader = this.tabPanel.querySelector('#switch-inner');
     const type = this.navItems[index].textContent;
     tabHeader.textContent = type;
-    /* eslint no-undef: "off" */
-    repairTypeService.getRepairTypes().then((res) => {
+    sendData({ url: '../db/db.json', method: 'GET' }).then((res) => {
       if (res.ok) {
-        const repairs = res.data.filter((item) => item.type === type);
+        const repairs = res.data.repairTypes.filter((item) => item.type === type);
         this.renderTableRow(repairs, index);
       }
     });
