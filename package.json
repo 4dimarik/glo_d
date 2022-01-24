@@ -6,8 +6,8 @@
   "scripts": {
     "build": "webpack --mode=production",
     "watch": "webpack --watch --mode=development",
-    "start:json": "run-p start server",
-    "start": "webpack serve --mode=development --open ",
+    "start": "run-p serve server",
+    "serve": "webpack serve --mode=development --open ",
     "server": "json-server --watch ./dist/db/db.json --port=4545"
   },
   "repository": {

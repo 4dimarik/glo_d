@@ -27,7 +27,7 @@ export default class RepairTypeTab extends Tabs {
     const type = this.navItems[index].textContent;
     tabHeader.textContent = type;
     /* eslint no-undef: "off" */
-    repairTypeService.getRepairType().then((res) => {
+    repairTypeService.getRepairTypes().then((res) => {
       if (res.ok) {
         const repairs = res.data.filter((item) => item.type === type);
         this.renderTableRow(repairs, index);

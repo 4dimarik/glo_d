@@ -530,7 +530,8 @@ body {
 /*   Модальное окно   */
 
 #modal {
-    display: none;
+    /*display: none;*/
+  visibility: hidden;
 }
 
 .modal {

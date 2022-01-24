@@ -9,11 +9,18 @@ const sendData = async ({ url, method, data }) => {
           'Content-Type': 'application/json',
         },
       },
+      DELETE: { method: 'DELETE' },
+      PUT: {
+        method: 'PUT',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
     };
     const response = await fetch(url, {
       ...props[method],
     });
-    // console.log(response);
     if (!response.ok) {
       throw response;
     }

@@ -35,11 +35,18 @@ export default class Modal {
     });
   }
 
-  afterOpen() {}
+  afterOpen() {
+    //
+  }
 
-  afterClose() {}
+  afterClose() {
+    //
+  }
 
-  toggle(show) {
+  toggle(show, target = null) {
     this.modal.style.visibility = show ? 'visible' : 'hidden';
+    if (show) {
+      this.afterOpen(target);
+    }
   }
 }
