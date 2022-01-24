@@ -27,7 +27,7 @@ export default class RepairTypeTab extends Tabs {
     const tabHeader = this.tabPanel.querySelector('#switch-inner');
     const type = this.navItems[index].textContent;
     tabHeader.textContent = type;
-    sendData({ url: '../db/db.json', method: 'GET' }).then((res) => {
+    sendData({ url: './db/db.json', method: 'GET' }).then((res) => {
       if (res.ok) {
         const repairs = res.data.repairTypes.filter((item) => item.type === type);
         this.renderTableRow(repairs, index);
